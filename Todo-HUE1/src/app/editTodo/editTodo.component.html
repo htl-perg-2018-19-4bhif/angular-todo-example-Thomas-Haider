@@ -1,0 +1,15 @@
+<h1>Edit Todo</h1>
+<mat-card>
+    <mat-form-field color="primary" class="btnleft">
+        <input matInput placeholder="Description" [(ngModel)]="description">
+    </mat-form-field>
+    <mat-form-field color="primary" class="btnmiddle">
+        <mat-select placeholder="People" (selectionChange)="changeSelection($event.value)" [(ngModel)]="selectedPerson">
+            <mat-option *ngFor="let people of peoples" [value]=people.name>
+                {{people.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button class="btnright" (click)="editTodo()">Create Todo</button>
+    <mat-slide-toggle color="primary" [checked]=done class="checkright" (change)="changedDone($event)"></mat-slide-toggle>
+</mat-card>

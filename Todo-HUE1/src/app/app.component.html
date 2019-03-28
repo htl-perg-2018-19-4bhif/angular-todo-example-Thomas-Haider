@@ -1,0 +1,58 @@
+<h1>Todo List</h1>
+<br>
+<br>
+<br>
+<br>
+<br>
+<mat-toolbar class="toolbar">
+  <button mat-raised-button class="btnleft" (click)="loadTodos()">Load People</button>
+  <button mat-raised-button class="btnmiddle" (click)="addTodo()">Create Todos</button>
+  <mat-slide-toggle class="checkRight" (change)="changedSort($event)">Undone Todos</mat-slide-toggle>
+
+  <mat-form-field color="primary" class="sortPeople">
+      <mat-select placeholder="People" (selectionChange)="changeSelection($event.value)">
+          <mat-option *ngFor="let people of peoples" [value]=people.name>
+              {{people.name}}
+          </mat-option>
+      </mat-select>
+  </mat-form-field>
+</mat-toolbar>
+
+
+<br>
+<mat-card>
+  <mat-table [dataSource]="dataSource" class="pointer">
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+      <mat-cell *matCellDef="let todo">{{todo.id}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="assignedTo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Gehört zu</mat-header-cell>
+      <mat-cell *matCellDef="let todo">{{todo.assignedTo}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>description</mat-header-cell>
+      <mat-cell *matCellDef="let todo">{{todo.description}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+      <mat-cell *matCellDef="let todo">
+        <mat-slide-toggle disabled [checked]=todo.done></mat-slide-toggle>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Edit</mat-header-cell>
+      <mat-cell *matCellDef="let todo" (click)="editIT(todo.id)">
+        <mat-icon>edit</mat-icon>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Delete</mat-header-cell>
+      <mat-cell *matCellDef="let todo" (click)="deleteIT(todo.id)">
+        <mat-icon>delete</mat-icon>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</mat-card>

@@ -1,0 +1,24 @@
+
+mat-card{
+    height:50px;
+}
+.btnleft{
+    position: absolute;
+    left: 60px;
+}
+.btnmiddle{
+    position: absolute;
+    left: 300px;
+}
+
+.btnright{
+    position: absolute;
+    right:60px;
+    top:35%;
+}
+
+.checkright{
+    position: absolute;
+    right:260px;
+    top:35%;
+}

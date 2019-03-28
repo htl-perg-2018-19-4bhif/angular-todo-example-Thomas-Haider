@@ -1,0 +1,22 @@
+.btnleft{
+    position: absolute;
+    left: 60px;
+}
+.btnmiddle{
+    position: absolute;
+    left: 30%;
+}
+
+h1{
+    position: absolute;
+    left: 45%;
+    font-size: 30pt;
+}
+.checkRight{
+    position: absolute;
+    right: 10%;
+}
+.sortPeople{
+    position: absolute;
+    right: 30%;
+}
